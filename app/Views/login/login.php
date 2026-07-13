@@ -13,8 +13,8 @@
             <div class="d-flex align-items-center gap-3 mb-4">
                 <img src="<?= base_url('assets/logo.png') ?>" alt="Logo" width="48" height="48" class="object-fit-contain">
                 <div>
-                    <div class="fw-bold fs-6 text-dark">RPS Digital</div>
-                    <div class="text-muted" style="font-size:0.82rem;">Rom Paulo Sarmiento</div>
+                    <div class="fw-bold fs-6 text-dark">1 Blend Feeds</div>
+                    <div class="text-muted" style="font-size:0.82rem;">Number 1 Feeds Corporation</div>
                 </div>
             </div>
 
