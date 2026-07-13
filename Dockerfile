@@ -32,6 +32,9 @@ RUN composer install --no-interaction --no-dev --optimize-autoloader
 # Copy the rest of the application (including public/)
 COPY . . 
 
+# Set correct ownership for writable folder
+RUN chown -R www-data:www-data /var/www/html/writable
+
 # Copy Nginx config
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
@@ -45,6 +48,6 @@ COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN usermod -u 1000 www-data || true
 RUN mkdir -p /var/www/html && chown -R www-data:www-data /var/www/html
 
-EXPOSE 80
+EXPOSE 80 443
 
 CMD ["/usr/bin/supervisord"]
