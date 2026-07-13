@@ -1,0 +1,56 @@
+.delivery_receipt_box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px; 
+    background-color:#90ff90;
+    border-top: 5px solid #80b380; 
+}
+
+.delivery_receipt_title p{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.delivery_receipt_details_box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px; 
+    background-color: #f9f9f9;
+}
+
+.delivery_receipt_details_title p{
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.content_center {
+    align-content: center;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* The .n1_logo class is used for thumbnail styling */
+.n1_logo img {
+    width: 80px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}

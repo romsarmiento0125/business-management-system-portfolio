@@ -1,0 +1,239 @@
+.si_dr_box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px; 
+    background-color: #f9f9f9;
+    border-top: 5px solid #80b380; 
+}
+
+.si_dr_title p{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.sales_invoice_details_box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+}
+
+.sales_invoice_details_title p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.delivery_receipt_details_box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+}
+
+.delivery_receipt_details_title p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.content_center {
+    align-content: center;
+}
+
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.n1_logo img {
+    width: 80px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Custom light row highlights for SI/DR dashboard */
+/* Ensure full-row background even with DataTables stripe/hover by targeting cells */
+/* Base application */
+tr.table-warning-light > td, tr.table-warning-light > th { background-color: #fff8e1 !important; }
+tr.table-danger-light  > td, tr.table-danger-light  > th { background-color: #fdecea !important; }
+
+/* Override stripe/hover variants explicitly */
+.table-striped > tbody > tr.table-warning-light:nth-of-type(odd) > td,
+.table-striped > tbody > tr.table-warning-light:nth-of-type(odd) > th { background-color: #fff8e1 !important; }
+.table-striped > tbody > tr.table-danger-light:nth-of-type(odd) > td,
+.table-striped > tbody > tr.table-danger-light:nth-of-type(odd) > th { background-color: #fdecea !important; }
+
+.table-hover > tbody > tr.table-warning-light:hover > td,
+.table-hover > tbody > tr.table-warning-light:hover > th { background-color: #fff4cc !important; /* slightly stronger on hover */ }
+.table-hover > tbody > tr.table-danger-light:hover > td,
+.table-hover > tbody > tr.table-danger-light:hover > th { background-color: #fbd2cd !important; /* slightly stronger on hover */ }
+
+/* Optional: keep readable text color */
+tr.table-warning-light, tr.table-warning-light td, tr.table-warning-light th,
+tr.table-danger-light, tr.table-danger-light td, tr.table-danger-light th {
+    color: inherit;
+}
+
+/* Explicitly disable zebra striping on SI/DR tables only (Bootstrap and DataTables sources) */
+#sales_invoice_list_table.table-striped > tbody > tr:nth-of-type(odd) > td,
+#delivery_receipt_list_table.table-striped > tbody > tr:nth-of-type(odd) > td {
+    background-color: transparent !important;
+}
+
+#sales_invoice_list_table.dataTable.stripe tbody tr.odd > td,
+#sales_invoice_list_table.dataTable.stripe tbody tr.even > td,
+#delivery_receipt_list_table.dataTable.stripe tbody tr.odd > td,
+#delivery_receipt_list_table.dataTable.stripe tbody tr.even > td {
+    background-color: transparent !important;
+}
+
+/* ===== Receipt modal table styling ===== */
+.receipt-table {
+    font-size: 0.9rem;
+}
+
+.receipt-table th,
+.receipt-table td {
+    padding: 0.35rem 0.5rem;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.receipt-table th {
+    background-color: #f8f9fa;
+}
+
+.receipt-title {
+    margin-bottom: 0;
+}
+
+.receipt-subtitle {
+    margin-bottom: 0;
+}
+
+.receipt-info p {
+    margin-bottom: 0;
+}
+
+/* ===== DataTable scrollY styling ===== */
+/* The table header stays fixed, body scrolls, controls (entries/search/pagination) remain outside */
+.sales_invoice_details_box .dataTables_scrollBody,
+.delivery_receipt_details_box .dataTables_scrollBody {
+    border-bottom: 1px solid #ddd;
+}
+
+.sales_invoice_details_box .dataTables_scrollHead,
+.delivery_receipt_details_box .dataTables_scrollHead {
+    background-color: #f9f9f9;
+}
+
+/* ===== Responsive adjustments ===== */
+
+/* Small screens: reduce box padding, title size, receipt text */
+@media (max-width: 767.98px) {
+    .si_dr_box {
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .si_dr_title p {
+        font-size: 1.1rem;
+    }
+
+    .sales_invoice_details_box,
+    .delivery_receipt_details_box {
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    .info-box {
+        min-width: 0;
+        flex: 1 1 100%;
+    }
+
+    .loader {
+        width: 80px;
+        height: 80px;
+        border-width: 10px;
+    }
+
+    /* Let DataTables scroll horizontally on mobile */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Receipt modal text scaling for small screens */
+    .modal_box .receipt-title {
+        font-size: 1rem;
+    }
+    .modal_box .receipt-heading {
+        font-size: 0.95rem;
+    }
+    .modal_box .receipt-subtitle {
+        font-size: 0.8rem;
+    }
+    .modal_box .receipt-info p {
+        font-size: 0.8rem;
+    }
+    .receipt-table {
+        font-size: 0.75rem;
+    }
+    .receipt-table th,
+    .receipt-table td {
+        padding: 0.25rem 0.35rem;
+    }
+    .modal-footer .btn {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+    .n1_logo img {
+        width: 50px;
+    }
+}
+
+/* Medium screens: info boxes side by side but allow wrapping */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .info-box {
+        min-width: 200px;
+        flex: 1 1 auto;
+    }
+
+    /* Slightly smaller receipt text on tablets */
+    .modal_box .receipt-title {
+        font-size: 1.3rem;
+    }
+    .modal_box .receipt-subtitle {
+        font-size: 0.95rem;
+    }
+    .modal_box .receipt-info p {
+        font-size: 0.9rem;
+    }
+    .receipt-table {
+        font-size: 0.85rem;
+    }
+}
+
+/* Ensure header buttons look right at md+ */
+@media (min-width: 768px) {
+    .btn-md-normal {
+        font-size: 1rem;
+        padding: 0.375rem 0.75rem;
+    }
+}

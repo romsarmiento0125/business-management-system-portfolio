@@ -1,0 +1,78 @@
+.product_box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px; 
+    background-color: #f9f9f9;
+    border-top: 5px solid #80b380; 
+}
+
+.product_title p{
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.modal_box {
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    /* box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); */
+}
+
+.content_center {
+    align-content: center;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 999;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Tablet and below */
+@media (max-width: 991.98px) {
+    .product_box {
+        padding: 15px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 575.98px) {
+    .product_box {
+        padding: 12px;
+    }
+
+    .product_title p {
+        font-size: 1.1rem;
+    }
+
+    .modal_box {
+        padding: 12px;
+    }
+
+    .table-responsive {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Keep DataTables controls properly sized on mobile */
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter {
+        float: none;
+        text-align: left;
+        margin-bottom: 8px;
+    }
+}

@@ -1,0 +1,45 @@
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 999;
+}
+
+.si_data_table_box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px; 
+    background-color: #f9f9f9;
+    margin-bottom: 30px; /* Add space between boxes */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07), 0 1.5px 4px rgba(0,0,0,0.03); /* Subtle shadow for separation */
+}
+
+.si_clients_filter_box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 15px; 
+    background-color: #f9f9f9;
+    margin-bottom: 30px; /* Add space between boxes */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07), 0 1.5px 4px rgba(0,0,0,0.03); /* Subtle shadow for separation */
+}
+
+.si_filter_box {
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+#item_list_table_v2_wrapper .dt-buttons {
+    display: none !important;
+}
