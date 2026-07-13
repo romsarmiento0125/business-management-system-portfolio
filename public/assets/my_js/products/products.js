@@ -67,9 +67,9 @@ function product_table(data) {
                     }
 
                     let tagLabelMap = {
-                        '1blend': '1 Blend Feeds',
-                        'atlas': 'Atlas Feeds',
-                        'robina': 'Robina Feeds'
+                        'a': 'Product A',
+                        'b': 'Product B',
+                        'c': 'Product C'
                     };
 
                     let normalizedTag = String(data.product_tag).toLowerCase();

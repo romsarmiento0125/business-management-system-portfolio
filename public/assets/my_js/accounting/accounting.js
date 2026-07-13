@@ -555,12 +555,6 @@ $(document).on('click', '#si_dr_volume_export', function () {
     }
 });
 
-// Apply row background colors to an exported Excel workbook.
-// Colors match the Bootstrap/custom classes used in the on-screen tables:
-//   net_profit <= 0          → table-danger-light  (#fdecea)
-//   product_tag '1blend'     → table-success       (#d1e7dd)
-//   product_tag 'robina'     → table-danger        (#f8d7da)
-//   product_tag 'atlas'      → table-primary       (#cfe2ff)
 function applyExcelRowColors(xlsx, dtTable) {
     var colors = ['FDECEA', 'D1E7DD', 'F8D7DA', 'CFE2FF'];
 
@@ -598,11 +592,11 @@ function applyExcelRowColors(xlsx, dtTable) {
         var styleIdx;
         if (net_profit <= 0) {
             styleIdx = xfStart;       // danger-light
-        } else if (rd.product_tag === '1blend') {
+        } else if (rd.product_tag === 'A') {
             styleIdx = xfStart + 1;   // success
-        } else if (rd.product_tag === 'robina') {
+        } else if (rd.product_tag === 'B') {
             styleIdx = xfStart + 2;   // danger
-        } else if (rd.product_tag === 'atlas') {
+        } else if (rd.product_tag === 'C') {
             styleIdx = xfStart + 3;   // primary
         }
         if (styleIdx !== undefined) {
@@ -612,11 +606,10 @@ function applyExcelRowColors(xlsx, dtTable) {
 }
 
 function populate_si_volume_table(data) {
-    console.log('Populating SI Volume Table with data:', data);
 
     // Fixed tag → Bootstrap color mapping
-    var tagColorMap  = { '1blend': 'table-success', 'robina': 'table-danger', 'atlas': 'table-primary' };
-    var tagBadgeMap  = { '1blend': 'text-bg-success', 'robina': 'text-bg-danger', 'atlas': 'text-bg-primary' };
+    var tagColorMap  = { 'A': 'table-success', 'B': 'table-danger', 'C': 'table-primary' };
+    var tagBadgeMap  = { 'A': 'text-bg-success', 'B': 'text-bg-danger', 'C': 'text-bg-primary' };
     var uniqueTags = [];
     data.forEach(function(r) {
         if (r.product_tag && uniqueTags.indexOf(r.product_tag) === -1) {
@@ -757,8 +750,8 @@ function populate_si_volume_table(data) {
 }
 
 function populate_dr_volume_table(data) {
-    var tagColorMap = { '1blend': 'table-success', 'robina': 'table-danger', 'atlas': 'table-primary' };
-    var tagBadgeMap = { '1blend': 'text-bg-success', 'robina': 'text-bg-danger', 'atlas': 'text-bg-primary' };
+    var tagColorMap = { 'A': 'table-success', 'B': 'table-danger', 'C': 'table-primary' };
+    var tagBadgeMap = { 'A': 'text-bg-success', 'B': 'text-bg-danger', 'C': 'text-bg-primary' };
     var uniqueTags = [];
     data.forEach(function(r) {
         if (r.product_tag && uniqueTags.indexOf(r.product_tag) === -1) {
@@ -897,8 +890,8 @@ function populate_dr_volume_table(data) {
 }
 
 function populate_si_dr_volume_table(data) {
-    var tagColorMap = { '1blend': 'table-success', 'robina': 'table-danger', 'atlas': 'table-primary' };
-    var tagBadgeMap = { '1blend': 'text-bg-success', 'robina': 'text-bg-danger', 'atlas': 'text-bg-primary' };
+    var tagColorMap = { 'A': 'table-success', 'B': 'table-danger', 'C': 'table-primary' };
+    var tagBadgeMap = { 'A': 'text-bg-success', 'B': 'text-bg-danger', 'C': 'text-bg-primary' };
     var uniqueTags = [];
     data.forEach(function(r) {
         if (r.product_tag && uniqueTags.indexOf(r.product_tag) === -1) {
