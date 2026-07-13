@@ -130,4 +130,5 @@ nb-configuration.xml
 /phpunit*.xml
 
 # Add App.php to ignore list
+app/Config/App.php
 /app/Database/Dump20250918_structure
