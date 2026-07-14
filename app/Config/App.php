@@ -337,6 +337,11 @@ class App extends BaseConfig
             return (int) $_SERVER['MY_EXTERNAL_PORT'];
         }
     
+        // fallback in case it's only reachable via getenv(), not $_SERVER
+        if ($envPort = getenv('MY_EXTERNAL_PORT')) {
+            return (int) $envPort;
+        }
+        
         // 2. Check X-Forwarded-Port (set by proxy/tunnel)
         if (! empty($_SERVER['HTTP_X_FORWARDED_PORT'])) {
             return (int) trim(explode(',', $_SERVER['HTTP_X_FORWARDED_PORT'])[0]);
