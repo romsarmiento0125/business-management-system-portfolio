@@ -17,7 +17,7 @@ class App extends BaseConfig
      *
      * IMPORTANT: Make sure 'app.baseURL' is COMMENTED OUT in your .env file!
      */
-    public string $baseURL = 'http://bms.number1/';
+    public string $baseURL = 'http://bms.test/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -156,22 +156,8 @@ class App extends BaseConfig
      * @var list<string>
      */
     private array $trustedHosts = [
-        'bms.n1.feeds',
-        '192.168.0.3',
-        '192.168.0.2',
-        'paulo-svf15327ejw.tail93ddd.ts.net',
-        '100.98.146.57',
-        '100.92.195.28',
-        '100.101.233.26',
-        'localhost',
-        '192.168.1.200',
-        '127.0.0.1',
-        '192.168.0.200',
-        'number1feedscorp-ubox.tailc13248.ts.net',
-        'bms.rps-home-lab.com',
-        '100.108.49.45',
-        'number1.test',
-        'bms.test'
+        'bms.test',
+        'bms.rps-home-lab.com'
     ];
 
     /**
@@ -179,7 +165,7 @@ class App extends BaseConfig
      * - Running in CLI mode (e.g., `php spark`)
      * - An untrusted/spoofed Host header is detected
      */
-    private string $defaultBaseURL = 'http://bms.n1.feeds/';
+    private string $defaultBaseURL = 'http://bms.test/';
 
     /**
      * --------------------------------------------------------------------------
@@ -283,7 +269,7 @@ class App extends BaseConfig
             return $_SERVER['SERVER_NAME'];
         }
 
-        return 'bms.number1';
+        return 'bms.test';
     }
 
     /**
