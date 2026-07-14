@@ -156,6 +156,7 @@ class App extends BaseConfig
      * @var list<string>
      */
     private array $trustedHosts = [
+        '100.108.49.45',
         'bms.test',
         'bms.rps-home-lab.com'
     ];
