@@ -1,335 +1,8 @@
-<?= $this->extend('layout') ?>
+`<?= $this->extend('layout') ?>
 
 <?= $this->section('content') ?>
 
-<style>
-    /* ── Google Font ── */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-    /* ── Reset for this page ── */
-    .cv-page * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
-
-    /* ── Hero ── */
-    .cv-hero {
-        position: relative;
-        width: 100%;
-        min-height: 58vh;
-        overflow: hidden;
-        display: flex;
-        align-items: flex-end;
-    }
-    .cv-hero img.cv-hero-bg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        transition: transform 8s ease;
-    }
-    .cv-hero:hover img.cv-hero-bg { transform: scale(1.04); }
-    .cv-hero-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            to top,
-            rgba(18, 32, 18, 0.92) 0%,
-            rgba(18, 32, 18, 0.55) 55%,
-            rgba(18, 32, 18, 0.15) 100%
-        );
-    }
-    .cv-hero-content {
-        position: relative;
-        z-index: 2;
-        padding: 2.5rem 2.5rem 2.8rem;
-        width: 100%;
-    }
-    .cv-hero-badge {
-        display: inline-block;
-        background: rgba(180, 155, 60, 0.18);
-        border: 1px solid rgba(180, 155, 60, 0.55);
-        color: #e0c56a;
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        padding: 0.28rem 0.85rem;
-        border-radius: 50px;
-        margin-bottom: 0.75rem;
-    }
-    .cv-hero-name {
-        font-size: clamp(1.8rem, 4vw, 3rem);
-        font-weight: 800;
-        color: #fff;
-        line-height: 1.15;
-        margin: 0 0 0.5rem;
-        letter-spacing: -0.02em;
-    }
-    .cv-hero-subtitle {
-        font-size: clamp(0.9rem, 2vw, 1.1rem);
-        color: rgba(255,255,255,0.72);
-        font-weight: 400;
-        margin-bottom: 1.4rem;
-    }
-    .cv-hero-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.55rem;
-    }
-    .cv-hero-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        background: rgba(255,255,255,0.09);
-        backdrop-filter: blur(6px);
-        border: 1px solid rgba(255,255,255,0.18);
-        color: rgba(255,255,255,0.85);
-        font-size: 0.78rem;
-        font-weight: 500;
-        padding: 0.3rem 0.75rem;
-        border-radius: 50px;
-        text-decoration: none;
-        transition: background 0.2s, border-color 0.2s;
-    }
-    .cv-hero-chip:hover {
-        background: rgba(255,255,255,0.18);
-        border-color: rgba(255,255,255,0.35);
-        color: #fff;
-    }
-    .cv-hero-chip i { font-size: 0.7rem; opacity: 0.75; }
-
-    /* ── Section Cards ── */
-    .cv-section {
-        background: #fff;
-        border-radius: 14px;
-        border: 1px solid rgba(0,0,0,0.06);
-        box-shadow: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
-        padding: 1.8rem 2rem;
-        margin-bottom: 1.25rem;
-        transition: box-shadow 0.25s ease, transform 0.25s ease;
-    }
-    .cv-section:hover {
-        box-shadow: 0 6px 24px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
-        transform: translateY(-2px);
-    }
-    .cv-section-header {
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
-        margin-bottom: 1.2rem;
-        padding-bottom: 0.9rem;
-        border-bottom: 1px solid #f0f0f0;
-    }
-    .cv-section-icon {
-        width: 38px;
-        height: 38px;
-        border-radius: 10px;
-        background: linear-gradient(135deg, #1e4d20, #2d6e30);
-        color: #e0c56a;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.95rem;
-        flex-shrink: 0;
-    }
-    .cv-section-title {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin: 0;
-        letter-spacing: -0.01em;
-    }
-
-    /* ── Summary text ── */
-    .cv-summary-text {
-        color: #4a4a4a;
-        line-height: 1.8;
-        font-size: 0.97rem;
-        font-weight: 400;
-        margin: 0;
-    }
-
-    /* ── Skills ── */
-    .cv-skill-group { margin-bottom: 1.1rem; }
-    .cv-skill-group:last-child { margin-bottom: 0; }
-    .cv-skill-label {
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #888;
-        margin-bottom: 0.55rem;
-    }
-    .cv-skill-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.45rem;
-    }
-    .cv-skill-tag {
-        font-size: 0.8rem;
-        font-weight: 500;
-        padding: 0.28rem 0.75rem;
-        border-radius: 50px;
-        border: 1px solid;
-        transition: all 0.2s;
-    }
-    .cv-skill-tag.primary {
-        background: #edf7ee;
-        color: #1e5c22;
-        border-color: #b5d9b8;
-    }
-    .cv-skill-tag.primary:hover {
-        background: #1e4d20;
-        color: #e0c56a;
-        border-color: #1e4d20;
-    }
-    .cv-skill-tag.secondary {
-        background: #fdf8e8;
-        color: #7a6010;
-        border-color: #e8d580;
-    }
-    .cv-skill-tag.secondary:hover {
-        background: #c9a82a;
-        color: #fff;
-        border-color: #c9a82a;
-    }
-    .cv-skill-tag.neutral {
-        background: #f4f4f5;
-        color: #444;
-        border-color: #d4d4d8;
-    }
-    .cv-skill-tag.neutral:hover {
-        background: #3f3f46;
-        color: #fff;
-        border-color: #3f3f46;
-    }
-
-    /* ── Timeline / Experience ── */
-    .cv-timeline { position: relative; padding-left: 1.5rem; }
-    .cv-timeline::before {
-        content: '';
-        position: absolute;
-        left: 0.4rem;
-        top: 0.5rem;
-        bottom: 0.5rem;
-        width: 2px;
-        background: linear-gradient(to bottom, #2d6e30, #e0c56a40);
-        border-radius: 2px;
-    }
-    .cv-tl-item { position: relative; margin-bottom: 1.6rem; }
-    .cv-tl-item:last-child { margin-bottom: 0; }
-    .cv-tl-dot {
-        position: absolute;
-        left: -1.5rem;
-        top: 0.35rem;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #2d6e30;
-        border: 2px solid #fff;
-        box-shadow: 0 0 0 2px #2d6e30;
-    }
-    .cv-tl-company {
-        font-size: 1rem;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 0.15rem;
-    }
-    .cv-tl-role-row {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 0.65rem;
-    }
-    .cv-tl-role {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #fff;
-        background: linear-gradient(135deg, #1e4d20, #2d6e30);
-        padding: 0.18rem 0.65rem;
-        border-radius: 50px;
-    }
-    .cv-tl-period {
-        font-size: 0.78rem;
-        color: #888;
-        font-weight: 500;
-    }
-    .cv-tl-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .cv-tl-list li {
-        position: relative;
-        padding-left: 1.1rem;
-        margin-bottom: 0.4rem;
-        font-size: 0.9rem;
-        color: #4a4a4a;
-        line-height: 1.65;
-    }
-    .cv-tl-list li::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0.58rem;
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: #c9a82a;
-    }
-
-    /* ── Project card ── */
-    .cv-project-card {
-        border: 1px solid #e8f0e8;
-        border-left: 4px solid #2d6e30;
-        border-radius: 10px;
-        padding: 1.1rem 1.25rem;
-        background: #f8fcf8;
-        transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .cv-project-card:hover {
-        box-shadow: 0 4px 16px rgba(29,78,32,0.12);
-        border-left-color: #e0c56a;
-    }
-    .cv-project-title {
-        font-size: 1rem;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 0.2rem;
-    }
-    .cv-project-title a {
-        color: #1e5c22;
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-    .cv-project-title a:hover { color: #c9a82a; text-decoration: underline; }
-    .cv-project-purpose {
-        font-size: 0.85rem;
-        color: #666;
-        margin-bottom: 0.7rem;
-        font-style: italic;
-    }
-
-    /* ── Scroll Animations ── */
-    .cv-fade-up {
-        opacity: 0;
-        transform: translateY(22px);
-        transition: opacity 0.55s ease, transform 0.55s ease;
-    }
-    .cv-fade-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* ── Responsive tweaks ── */
-    @media (max-width: 768px) {
-        .cv-hero { min-height: 48vh; }
-        .cv-hero-content { padding: 1.5rem 1.25rem 2rem; }
-        .cv-section { padding: 1.25rem 1.15rem; }
-    }
-</style>
-
+<link rel="stylesheet" href="<?= base_url('assets/my_css/home/home.css') ?>">
 <link rel="stylesheet" href="<?= base_url('assets/admin_lte/plugins/fontawesome-free/css/all.min.css') ?>">
 
 <div class="cv-page">
@@ -413,7 +86,31 @@
                     <span class="cv-skill-tag neutral">CI/CD Pipelines</span>
                 </div>
             </div>
+
+            <div class="cv-skill-group">
+                <div class="cv-skill-label">AI &amp; Automation <span style="font-size:0.65rem;font-weight:500;color:#a0a0a0;text-transform:none;letter-spacing:0;">(Learning / In Progress)</span></div>
+                <div class="cv-skill-tags">
+                    <span class="cv-skill-tag ai-tag">n8n</span>
+                    <span class="cv-skill-tag ai-tag">AI Agent Workflows</span>
+                    <span class="cv-skill-tag ai-tag">Qdrant (RAG)</span>
+                    <span class="cv-skill-tag ai-tag">Gemini API</span>
+                    <span class="cv-skill-tag ai-tag">Conversational AI</span>
+                </div>
+            </div>
         </div>
+
+        <style>
+            .cv-skill-tag.ai-tag {
+                background: #f3f0ff;
+                color: #5b3fbf;
+                border-color: #c4b5fd;
+            }
+            .cv-skill-tag.ai-tag:hover {
+                background: #5b3fbf;
+                color: #fff;
+                border-color: #5b3fbf;
+            }
+        </style>
 
         <!-- Professional Experience -->
         <div class="cv-section cv-fade-up">
@@ -480,17 +177,99 @@
                 <h2 class="cv-section-title">Projects</h2>
             </div>
 
-            <div class="cv-project-card">
-                <div class="cv-project-title">
-                    BMS — Business Management System &nbsp;
-                    <a href="https://bms.rps-hom-lab.com" target="_blank"><i class="fa fa-external-link" style="font-size:0.8rem;"></i> bms.rps-hom-lab.com</a>
+            <div class="cv-project-card mb-3">
+                <!-- Title row -->
+                <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.2rem;">
+                    <div class="cv-project-title" style="margin:0;">
+                        BMS &mdash; Business Management System &nbsp;
+                        <a href="https://bms.rps-hom-lab.com" target="_blank"><i class="fa fa-external-link" style="font-size:0.8rem;"></i> bms.rps-hom-lab.com</a>
+                    </div>
+                    <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:#edf7ee;color:#1e5c22;border:1px solid #b5d9b8;padding:0.15rem 0.6rem;border-radius:50px;">
+                        Live &amp; In Production
+                    </span>
                 </div>
-                <div class="cv-project-purpose">Purpose: To help the company digitize their data and streamline business operations.</div>
-                <ul class="cv-tl-list">
-                    <li>Developed a system for creating and printing sales invoices and delivery receipts, enabling companies to digitize their receipt data while using pre-printed physical receipts.</li>
-                    <li>Implemented functionality for tagging receipts and invoices as paid or unpaid, improving financial tracking.</li>
-                    <li>Enabled powerful data analytics, providing insights into sales, product performance (highest sales), client order volume (highest order clients), and overall sales totals for various periods (monthly, yearly, custom ranges).</li>
-                </ul>
+
+                <div class="cv-project-purpose" style="margin-bottom:0.75rem;">
+                    A custom-built, real-world Business Management System currently in active production use by a medium-sized company.
+                    While still a young and growing system, it has proven to be genuinely useful in day-to-day business operations.
+                </div>
+
+                <!-- Key highlights -->
+                <div style="margin-bottom:0.75rem;">
+                    <div class="cv-skill-label" style="margin-bottom:0.4rem;">Key Features</div>
+                    <ul class="cv-tl-list">
+                        <li>Developed a system for creating and printing sales invoices and delivery receipts, enabling the company to digitize receipt data while continuing to use their pre-printed physical receipts.</li>
+                        <li>Implemented paid / unpaid tagging on invoices and receipts for streamlined financial tracking.</li>
+                        <li>Enabled powerful data analytics &mdash; insights into product performance (top-selling items), client order volume (highest-order clients), and sales totals across custom date ranges (monthly, yearly, and more).</li>
+                    </ul>
+                </div>
+
+                <!-- Role & Ownership -->
+                <div style="margin-bottom:0.75rem;">
+                    <div class="cv-skill-label" style="margin-bottom:0.4rem;">Role &amp; Ownership</div>
+                    <ul class="cv-tl-list">
+                        <li><strong>Sole developer, architect, and DevOps engineer</strong> &mdash; solely responsible for the full system lifecycle: design, development, deployment, server setup, and ongoing maintenance.</li>
+                        <li>Collaborated closely with the <strong>company president</strong> to gather requirements and ensure the system is tailored precisely to the company&rsquo;s operational needs.</li>
+                        <li>Self-hosted on a personal server using Docker and Ubuntu Linux, with GitHub CI/CD pipelines for automated deployments.</li>
+                    </ul>
+                </div>
+
+                <!-- Portfolio note -->
+                <!-- IP & Portfolio note -->
+                <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:0.65rem 0.9rem;display:flex;align-items:flex-start;gap:0.6rem;margin-bottom:0.5rem;">
+                    <i class="fa fa-exclamation-circle" style="color:#d97706;margin-top:0.15rem;flex-shrink:0;"></i>
+                    <p style="margin:0;font-size:0.82rem;color:#92400e;line-height:1.6;">
+                        <strong>IP &amp; Portfolio Disclosure:</strong> The intellectual property of this system belongs to the client company. It is showcased here <strong>with their permission</strong> as a portfolio demonstration of my ability to design, build, deploy, and maintain a real end-to-end production system independently.
+                    </p>
+                </div>
+
+                <!-- For sale note -->
+                <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:0.65rem 0.9rem;display:flex;align-items:flex-start;gap:0.6rem;">
+                    <i class="fa fa-tag" style="color:#2563eb;margin-top:0.15rem;flex-shrink:0;"></i>
+                    <p style="margin:0;font-size:0.82rem;color:#1e3a8a;line-height:1.6;">
+                        <strong>Available for Sale:</strong> This system is open for acquisition. Interested businesses can get a fully customized version tailored to their specific workflow and operational needs &mdash; new features and modules can be added based on requirements.
+                    </p>
+                </div>
+            </div>
+
+            <!-- DANA AI Project -->
+            <div class="cv-project-card" style="border-left-color:#7c3aed;border-color:#ede9fe;background:#faf8ff;">
+                <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.2rem;">
+                    <div class="cv-project-title" style="margin:0;">DANA AI — Data Analyst AI</div>
+                    <span style="font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:#ede9fe;color:#5b3fbf;border:1px solid #c4b5fd;padding:0.15rem 0.6rem;border-radius:50px;">In Development</span>
+                </div>
+                <div class="cv-project-purpose" style="margin-bottom:0.5rem;">Purpose: An AI-powered data analyst integrated with BMS, allowing users to query business data through natural language conversation.</div>
+
+                <div style="margin-bottom:0.65rem;">
+                    <div class="cv-skill-label" style="margin-bottom:0.4rem;">Tech Stack</div>
+                    <div class="cv-skill-tags">
+                        <span class="cv-skill-tag ai-tag">n8n</span>
+                        <span class="cv-skill-tag ai-tag">AI Agent</span>
+                        <span class="cv-skill-tag ai-tag">Qdrant (RAG)</span>
+                        <span class="cv-skill-tag ai-tag">Gemini API</span>
+                        <span class="cv-skill-tag secondary">MySQL</span>
+                        <span class="cv-skill-tag neutral">Simple Memory</span>
+                    </div>
+                </div>
+
+                <div style="margin-bottom:0.65rem;">
+                    <div class="cv-skill-label" style="margin-bottom:0.4rem;">Current Capabilities</div>
+                    <ul class="cv-tl-list">
+                        <li>Users can ask questions about Sales Invoices (SI) and Delivery Receipts (DR) — such as volumes, sales totals, and unpaid status — through a natural language chat interface.</li>
+                        <li>Built on an n8n AI Agent workflow connected to the live BMS MySQL database, powered by Gemini API for language understanding and Qdrant for retrieval-augmented generation (RAG).</li>
+                        <li>Supports conversational context through simple memory, enabling follow-up questions within a session.</li>
+                    </ul>
+                </div>
+
+                <div style="border-top:1px solid #ede9fe;padding-top:0.65rem;">
+                    <div class="cv-skill-label" style="margin-bottom:0.4rem;color:#7c3aed;"><i class="fa fa-lightbulb-o me-1"></i> Future Vision</div>
+                    <ul class="cv-tl-list">
+                        <li>Automated report generation — DANA will produce formatted business reports on demand.</li>
+                        <li>Predictive product insights — identifying which products are most profitable and worth focusing on.</li>
+                        <li>Client risk analysis — flagging clients with a higher likelihood of growth or payment risk.</li>
+                        <li>Strategic business recommendations to help guide company decisions for the future.</li>
+                    </ul>
+                </div>
             </div>
 
         </div>
@@ -518,4 +297,4 @@
     })();
 </script>
 
-<?= $this->endSection() ?>
+<?= $this->endSection() ?>`
