@@ -36,7 +36,7 @@
     <!-- Brand / logo -->
     <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-dark" href="<?= base_url('/') ?>">
         <img src="<?= base_url('assets/logo.png') ?>" alt="Logo" height="36">
-        1 Blend Feeds
+        RPS Digital
     </a>
 
     <input type="hidden" id="base_url" value="<?= base_url() ?>">

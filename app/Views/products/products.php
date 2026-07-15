@@ -87,9 +87,9 @@
                     <label class="form-label fw-semibold">Tag</label>
                     <select class="select2" id="product_tag" style="width: 100%;">
                         <option value="na">N/A</option>
-                        <option value="1blend">1&nbsp;Blend&nbsp;Feeds</option>
-                        <option value="atlas">Atlas&nbsp;Feeds</option>
-                        <option value="robina">Robina&nbsp;Feeds</option>
+                        <option value="a">Product&nbsp;A</option>
+                        <option value="b">Product&nbsp;B</option>
+                        <option value="c">Product&nbsp;C</option>
                     </select>
                 </div>
             </div>
@@ -136,9 +136,9 @@
                     <label class="form-label fw-semibold">Tag</label>
                     <select class="select2" id="edit_product_tag" style="width: 100%;">
                         <option value="na">N/A</option>
-                        <option value="1blend">1&nbsp;Blend&nbsp;Feeds</option>
-                        <option value="atlas">Atlas&nbsp;Feeds</option>
-                        <option value="robina">Robina&nbsp;Feeds</option>
+                        <option value="a">Product&nbsp;A</option>
+                        <option value="b">Product&nbsp;B</option>
+                        <option value="c">Product&nbsp;C</option>
                     </select>
                 </div>
             </div>

@@ -16,8 +16,8 @@ function delivery_receipt_view_receipt(header, items, status, show_button) {
                                         <img src="/assets/logo.png" alt="Logo" style="max-height: 60px; width: auto;">
                                     </div>
                                     <div class="text-center">
-                                        <h3 style="font-size: 18px; margin: 0;">NUMBER 1 FEEDS CORPORATION</h3>
-                                        <h5 style="font-size: 14px; margin: 0;">Villarama Highway, Poblacion, Norzagaray, Bulacan</h5>
+                                        <h3 style="font-size: 18px; margin: 0;">ROM PAULO SARMIENTO</h3>
+                                        <h5 style="font-size: 14px; margin: 0;">Poblacion, Norzagaray, Bulacan</h5>
                                     </div>
                                 </div>
                             </div>

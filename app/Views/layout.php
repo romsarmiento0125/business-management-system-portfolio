@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1 Blend Feeds</title>
+    <title>RPS Digital</title>
     <link rel="icon" href="<?= base_url('assets/logo.png') ?>" type="image/x-icon"> 
     <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/fontawesome/css/font-awesome.min.css') ?>">
