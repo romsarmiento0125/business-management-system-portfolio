@@ -17,7 +17,8 @@ class App extends BaseConfig
      * IMPORTANT: Make sure 'app.baseURL' is COMMENTED OUT (or absent) in your
      * .env file, otherwise it will override this value.
      */
-    public string $baseURL = 'https://bms.rps-home-lab.com/';
+    // public string $baseURL = 'https://bms.rps-home-lab.com/';
+    public string $baseURL = 'http://bms.test/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
