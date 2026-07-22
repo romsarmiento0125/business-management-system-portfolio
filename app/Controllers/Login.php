@@ -32,7 +32,7 @@ class Login extends BaseController
                 $session->set('username', $result[0]->username);
                 $session->set('role', $result[0]->role_id);
                 $session->set('login', 1);
-                return json_encode(['status' => 'success', 'message' => 'Login success']);
+                return json_encode(['status' => 'success', 'message' => 'Wrong success message']);
             } else {
                 return json_encode(['status' => 'error', 'message' => 'Invalid password']);
             }
